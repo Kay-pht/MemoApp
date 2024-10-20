@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>LIST APP</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="header-logo" href="/">LIST APP</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Shopping List</h1>
+        <a href="/new" class="new-button">+Add</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column">ID</span>
+          <span>What To Buy</span>
+        </div>
+        <!-- 配列itemsを定義してください -->
+        <ul class="table-body">
+          <% items.forEach((item) => { %>
+          <li>
+            <div class="item-data">
+              <span class="id-column"><%= item.id %></span>
+              <span class="name-column"><%= item.name %></span>
+            </div>
+            <div class="item-menu">
+              <form action="/delete/<%=item.id %>" method="post">
+                <input type="submit" value="Delete" % />
+              </form>
+              <a href="/edit/<%= item.id %>">Edit</a>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
